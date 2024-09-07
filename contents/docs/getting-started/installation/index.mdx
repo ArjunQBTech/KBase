@@ -1,78 +1,19 @@
 ---
 title: Installation
-description: Installation guide for our application.
+description: Installation guide for Internet Computer.
 ---
 
-To get started with our application, follow these simple steps:
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam iste dolorum tempore consectetur explicabo tempora provident quia maxime, molestiae, facilis aperiam et, error illum vel ullam? Quis architecto dolore ullam
+To get started with installation, follow these simple steps:
 
-## Prerequisites
-
-Before installing our application, make sure you have the following:
-
-- Node.js installed on your machine
-
-<Note title="Remember" type="danger">
-  Lorem ipsum dolor sit amet consectetur adipisicing elit Numquam iste dolorum
-  tempore consectetur explicabo.
+<Note title = "Recommended" type="note">
+For Beginners, we recommend starting with the Installation Guide to set up your development environment.
 </Note>
 
-## Installation Steps
+## Operating System
 
-<Stepper>
-<StepperItem title="Clone the Repository">
-Start by creating a new React project using vite:
-
-```bash
-git clone https://github.com/your-repo/your-project.git
-```
-
-</StepperItem>
-<StepperItem title="Navigate to the Project Directory">
-Install `tailwindcss` and its peer dependencies, then add your `tailwind.config.js` and postcss.config.js files:
-
-```tsx
-import "@/styles/globals.css";
-import { Inter as FontSans } from "next/font/google";
-
-import { cn } from "@/lib/utils";
-
-const fontSans = FontSans({
-  subsets: ["latin"],
-  variable: "--font-sans",
-});
-
-export default function RootLayout({ children }: RootLayoutProps) {
-  return (
-    <html lang="en" suppressHydrationWarning>
-      <head />
-      <body
-        className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable
-        )}
-      >
-        ...
-      </body>
-    </html>
-  );
-}
-```
-
-</StepperItem>
-
-<StepperItem title="Install Dependencies">
- Install the necessary dependencies using npm or yarn.
-
-```bash
-npm install
-# or
-yarn install
-```
-
-</StepperItem>
-
-</Stepper>
+- [Windows](/docs/getting-started/installation/windows)
+- [Linux](/docs/getting-started/installation/linux)
+- [MacOS](/docs/getting-started/installation/macos)
 
 ## Additional Information
 

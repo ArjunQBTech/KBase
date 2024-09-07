@@ -1,0 +1,89 @@
+---
+title: Windows
+description: Guide for Installing ICP on Windows OS
+---
+
+## Overview
+
+Welcome to the Window guide. Here, you'll find all the information you need to get started.
+
+Please follow the steps below to install ICP on Windows OS.
+
+## Prerequisites
+
+Before proceeding, ensure you have the following:
+
+- Windows 10 or higher (version 2004 or higher). Build 19041.xxx or higher.
+- 64-bit machine (System type x64 based PC)
+
+## Installation Steps
+
+1. **WSL 2 (Windows Subsytem for Linux) Installation**:
+   Run the following command in Command Prompt as an Administrator:
+   - For Windows 11 :
+   ```bash
+   wsl --install
+   ```
+   For Reference: [WSL Installation Guide](https://docs.microsoft.com/en-us/windows/wsl/install)
+
+   - For Windows 10 :
+   Use the following documentation to install WSL  on Windows 10:
+   [WSL Installation Guide](https://learn.microsoft.com/en-us/windows/wsl/install-manual)
+
+      - After installing WSL, you can install Ubuntu or any other Linux distribution from the Microsoft Store.
+      - Open Ubuntu it will take some time to install.
+      - Set up your username and password.
+   
+   <Note type="warning">
+      Not all features of dfx are supported on WSL 2.
+   </Note>
+
+    You're good to go 👍
+
+2. **Installing Curl**
+- Open Ubuntu and run the following command to install curl:
+```bash
+sudo apt install curl
+```
+
+3. **Installing NVM**
+- Run the following command to install NVM:
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+```
+- Setting up Environment Variables:
+```bash
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+```
+- Open and close the terminal to apply the changes.
+- Run the following command to verify the installation:
+```bash
+nvm --version
+```
+
+4. **Installing Node**
+- Run the following command :
+```bash
+source ~/.bashrc
+```
+- Run the following command to install Node:
+```bash
+nvm install node
+```
+
+5. **Installing DFX(ICP SDK)**
+- Run the following command to install DFX:
+```bash
+sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)" 
+```
+
+## Common Issues
+
+For any issues, please refer to the [Troubleshooting](https://learn.microsoft.com/en-us/windows/wsl/troubleshooting#installation-issues) guide.
+
+<Note title="For more Details" type="note">
+Please feel free to ask questions in General Channel in Mattermost.
+</Note>

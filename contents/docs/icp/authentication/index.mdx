@@ -1,0 +1,141 @@
+---
+title: Authentication
+description: Overview of Authentication in ICP
+---
+
+## Overview
+
+Authentication is the process of verifying the identity of a user or system. It is a crucial aspect of any application or system to ensure that only authorized users can access the resources. In the context of the Internet Computer, authentication is used to verify the identity of users and systems interacting with the blockchain.
+
+## What to Expect 
+
+In this section, you will learn about different authentication mechanisms in the Internet Computer and how to integrate them into your applications.
+
+**Things to keep in mind :**
+- Authentication is a critical aspect of any application.
+- The Internet Computer provides various authentication mechanisms to secure your applications.
+- Choose the right authentication mechanism based on your application requirements.
+- Always follow best practices to ensure the security of your application.
+- Try to look into some repositories in [ICP-HUB](https://github.com/ICP-hub/) and how they have implemented authentications in their projects.
+
+## Examples 
+
+Here are some examples of authentication mechanisms in the Internet Computer:
+
+<Tabs defaultValue="js" className="pt-5 pb-1">
+  <TabsList className="">
+    <TabsTrigger value="js">useAuthClient.jsx</TabsTrigger>
+    <TabsTrigger value="app">App.jsx</TabsTrigger>
+  </TabsList>
+  <TabsContent value="js">
+  ```jsx {10} showLineNumbers
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import { AuthClient } from "@dfinity/auth-client";
+import { createActor} from '../declarations/User';
+import Login from '../pages/Login'
+
+const AuthContext = createContext();
+
+export const useAuthClient = () => {
+    const [authClient, setAuthClient] = useState(null);
+    const [isAuthenticated, setIsAuthenticated] = useState(null);
+    const [identity, setIdentity] = useState(null);
+    const [principal, setPrincipal] = useState(null);
+    const [actors, setActors] = useState(null);
+        
+    const clientInfo = async (client) => {
+        const isAuthenticated = await client.isAuthenticated();
+        const identity = client.getIdentity();
+        const principal = identity.getPrincipal();
+        console.log(principal)
+
+        setAuthClient(client);
+        setIdentity(identity);
+        setPrincipal(principal);
+
+        if (isAuthenticated && identity && principal && principal.isAnonymous() === false) {
+            let actor = createUserActor(ids.userCan, { agentOptions: { identity: identity } });
+            setActors(actor)
+        }
+
+        return true;
+    }
+
+    useEffect(() => {
+        (async () => {
+            const authClient = await AuthClient.create();
+            clientInfo(authClient);
+        })();
+    }, []);
+
+    const login = async () => {
+        return new Promise(async (resolve, reject) => {
+            try {
+                if (authClient.isAuthenticated() && ((await authClient.getIdentity().getPrincipal().isAnonymous()) === false)) {
+                    resolve(clientInfo(authClient));
+                } else {
+                    await authClient.login({
+                        identityProvider: process.env.DFX_NETWORK === "ic"
+                            ? "https://identity.ic0.app/"
+                            : `http://rdmx6-jaaaa-aaaaa-aaadq-cai.localhost:4943`,
+                        // identityProvider:"https://identity.ic0.app/",
+                        onError: (error) => reject((error)),
+                        onSuccess: () => resolve(clientInfo(authClient)),
+                    });
+                }
+            } catch (error) {
+                reject(error);
+            }
+        });
+    };
+
+    const logout = async () => {
+        await authClient?.logout();
+    }
+
+    return {
+        login, logout, authClient, isAuthenticated, identity, principal, ids, actors
+    };
+}
+
+export const AuthProvider = ({ children }) => {
+    const auth = useAuthClient();
+    if (!auth.isAuthenticated || !auth.actors) {
+        return (
+            <AuthContext.Provider value={auth}>
+                {children}
+            </AuthContext.Provider>
+        )
+    }
+    return (
+        <AuthContext.Provider value={auth}>
+            {children}
+        </AuthContext.Provider>
+    )
+};
+
+export const useAuth = () => useContext(AuthContext);
+```
+  </TabsContent>
+  <TabsContent value="app">
+```jsx {11} showLineNumbers
+
+import React from 'react';
+import { AuthProvider } from './context/AuthContext';
+
+const App = () => {
+  return (
+    <AuthProvider>
+      <div className="App">
+        <h1>Authentication Example</h1>
+      </div>
+    </AuthProvider>
+  );
+}
+```
+  </TabsContent>
+</Tabs>
+
+## Additional Information
+
+For more details, please feel free to ask questions in official Mattermost channels. 

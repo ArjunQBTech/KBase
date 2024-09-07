@@ -1,0 +1,59 @@
+---
+title: Plug Wallet Integration
+description: An Introduction to integrate Plug Wallet in your ICP Project.
+---
+
+Welcome to the Plug Wallet Integration guide. Here, you'll find all the information you need to get started.
+
+## Overview
+
+Plug Wallet is a browser extension wallet that allows users to interact with the Internet Computer blockchain. It enables users to interact with dapps, manage their ICP tokens, and engage with the ecosystem's offerings.
+
+
+## Getting Started
+
+### Installation
+
+To integrate Plug Wallet in your ICP project, follow these steps:
+
+1. Install the Plug Wallet extension from the [Chrome Web Store](https://chrome.google.com/webstore/detail/plug/cfbfdhimifdmdehjmkdobpcjfefblkjm) or [Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/plug/) or [Brave Extenions](https://chrome.google.com/webstore/detail/plug/cfbfdhimifdmdehjmkdobpcjfefblkjm).
+2. Create a new account or import an existing account.
+
+### Setup
+
+Once you have installed the **Plug Wallet** extension, you can start using it in your ICP project.
+1. Follow along the [offical guide](https://docs.plugwallet.ooo/getting-started/connect-to-plug/) to integrate Plug Wallet in your project or if you are using any packages such as `ic-auth` follow their documentation to set up.
+2. Open your **Plug Extension** and  click on Settings.
+3. Go to Developer Zone and enable **Test Mode**.
+4. Go to Network and Create a New Network with the following details:
+   - Name: `Any name of your choice`
+   - Host URL : `127.0.0.1:4943`
+5. Click on **Create New Network**.
+
+You're good to go 🚀
+
+## Common Issues
+
+1. **Error in connecting**: Error: Gateway returned an error: Code: 400 () Body: subnet_not_found
+
+   **Solution** : This error occurs when the DEV Mode is turned off and Network is not set.
+   - Open your **Plug Extension** and  click on Settings.
+   - Go to Developer Zone and enable **Test Mode**.
+   - Go to Network and Create a New Network with the following details:
+     - Name: `Any name of your choice`
+     - Host URL : `127.0.0.1:4943`
+   - Click on **Create New Network**.
+
+   This should fix the issue. Try refreshing the page and closing the extension to make sure the updates are reflected.
+
+   <Note title="Note " type="warning">
+   This issue will persist if you are using `ic-auth` package, since the host is not configured to use local network in the package.
+   </Note>
+
+## Resources
+
+- [Offical Documentation](https://docs.plugwallet.ooo/)
+
+## Additional Information
+
+For more details, please feel free to ask questions in official Mattermost channels.
