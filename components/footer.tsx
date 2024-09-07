@@ -12,14 +12,14 @@ export function Footer() {
             Build by{" "}
             <Link
               className="px-1 underline underline-offset-2"
-              href="https://github.com/nisabmohd"
+              href="https://github.com/ICP-HUB"
             >
-              nisabmohd
+              QuadB
             </Link>
             . The source code is available on{" "}
             <Link
               className="px-1 underline underline-offset-2"
-              href="https://github.com/nisabmohd/Aria-Docs"
+              href="https://github.com/ICP-HUB"
             >
               GitHub
             </Link>
