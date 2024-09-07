@@ -14,6 +14,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Pre from "@/components/pre";
 import Note from "@/components/note";
 import { Stepper, StepperItem } from "@/components/ui/stepper";
+import { Accordion, AccordionContent, AccordionTrigger } from "@/components/ui/accordion";
+import { AccordionItem } from "@radix-ui/react-accordion";
 
 // add custom components
 const components = {
@@ -24,7 +26,7 @@ const components = {
   pre: Pre,
   Note,
   Stepper,
-  StepperItem,
+  StepperItem
 };
 
 // can be used for other pages like blogs, Guides etc

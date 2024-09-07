@@ -1,0 +1,52 @@
+---
+title : Internet Identity
+description : Internet Identity is a decentralized identity system that allows users to create and manage their digital identities.
+---
+
+## Overview
+
+Internet Identity is a decentralized identity system that allows users to create and manage their digital identities. It is built on the Internet Computer blockchain and provides a secure and user-friendly way to authenticate users on dapps and websites.
+
+## Getting Started
+
+## Integration
+
+To integrate Internet Identity in your ICP project, follow the [offical docs](https://internetcomputer.org/docs/current/developer-docs/identity/internet-identity/integrate-internet-identity)
+
+## Common Issues
+
+1. **Connection Refused** : **rdmx6-jaaaa-aaaaa-aaadq-cai.localhost** refused to connect.
+    
+    **Solution** : This error occurs when the Internet Identity is not configured properly. 
+    Make sure you have followed the [offical docs](https://internetcomputer.org/docs/current/developer-docs/identity/internet-identity/integrate-internet-identity) to set up Internet Identity.
+    
+    Generally, the error could be due to the following reasons:
+    - The `identity` canister is not running.
+    - The `identity` canister is not configured properly.
+
+    Try the following fix : 
+    - Run the following command : 
+    ```bash
+    dfx deps pull 
+    ```
+
+    After successful execution, try running the following command :
+    ```bash
+    dfx deps deploy 
+    ```
+
+<Note title="Best Practices" type="note">
+Try to make a script that will automate the process of setting up Internet Identity. This will help you to avoid any manual errors.
+</Note>
+
+
+
+## Resources
+
+- [Offical Documentation](https://internetcomputer.org/docs/current/developer-docs/identity/internet-identity/integrate-internet-identity)
+- [Official GitHub Repository](https://github.com/dfinity/internet-identity)
+
+
+## Additional Information
+
+For more details, please feel free to ask questions in official Mattermost channels. 

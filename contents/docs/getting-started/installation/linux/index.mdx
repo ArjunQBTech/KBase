@@ -1,0 +1,64 @@
+---
+title: Linux
+description: Guide for Installing ICP on Linux OS
+---
+
+## Overview
+
+Welcome to the Linux guide. This document will guide you through the steps to install ICP on a Linux OS.
+
+## Prerequisites
+
+Before proceeding, ensure you have the following:
+
+- A Linux distribution (e.g., Ubuntu, Debian, Fedora).
+- A 64-bit machine (System type x64 based PC).
+
+## Installation Steps
+
+1. **Update Your System:**
+   Open your terminal and run the following commands to update your system packages:
+   ```bash
+   sudo apt update && sudo apt upgrade
+   ```
+2. **Installing Curl:**
+   Curl is required for downloading the installation scripts. Install it using the following command:
+   ```bash
+   sudo apt install curl
+   ```
+3. **Installing NVM:**
+   Run the following command to install NVM:
+   ```bash
+   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+   ```
+
+   Set up your environment variables:
+   ```bash
+   export NVM_DIR="$HOME/.nvm"
+   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+   ```
+
+   Open a new terminal session or run the following command to apply the changes:
+   source ~/.bashrc
+
+   Verify the installation by checking the NVM version:
+   ```bash
+   nvm --version
+   ```
+4. **Installing Node:**
+   Use NVM to install the latest version of Node.js:
+   ```bash
+   nvm install node
+   ```
+5. **Installing DFX (ICP SDK):**
+   Run the following command to install DFX:
+   ```bash
+   sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"```
+
+## Common Issues
+For any issues, please refer to the [Troubleshooting](https://learn.microsoft.com/en-us/windows/wsl/troubleshooting#installation-issues) guide.
+
+<Note title="For more Details" type="note"> 
+Please feel free to ask questions in the General Channel on Mattermost. 
+</Note>
